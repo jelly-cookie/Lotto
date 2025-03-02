@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generateBtn');
-    const resetBtn = document.getElementById('resetBtn');
     const balls = document.querySelectorAll('.ball');
     const historyList = document.getElementById('historyList');
     
@@ -10,14 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // 초기 히스토리 표시
     updateHistory();
     
-    generateBtn.addEventListener('click', generateNumbers);
-    resetBtn.addEventListener('click', resetNumbers);
-    
+    generateBtn.addEventListener('click', () => {
+        // 버튼 텍스트 변경
+        if (generateBtn.textContent === '번호 추첨하기') {
+            generateNumbers();
+            generateBtn.textContent = '다시 추첨하기';
+        } else {
+            // 기존 번호 리셋
+            resetBalls();
+            // 약간의 딜레이 후 새로운 번호 생성
+            setTimeout(generateNumbers, 100);
+        }
+    });
+
     function generateNumbers() {
         const numbers = new Set();
-        
-        // 버튼 비활성화
-        generateBtn.disabled = true;
         
         // 1부터 45까지의 숫자 중 6개를 무작위로 선택
         while(numbers.size < 6) {
@@ -27,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 선택된 숫자를 정렬
         const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
         
-        // 각 공에 번호 표시 및 색상 설정 (애니메이션 효과 포함)
+        // 각 공에 번호 표시 및 색상 설정
         balls.forEach((ball, index) => {
             setTimeout(() => {
                 const number = sortedNumbers[index];
@@ -46,22 +52,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     ball.style.backgroundColor = '#b0d840';
                 }
-                
-                // 마지막 공이 표시된 후 버튼 활성화
+
+                // 마지막 공이 표시된 후 히스토리에 추가
                 if (index === balls.length - 1) {
-                    generateBtn.disabled = false;
-                    // 히스토리에 추가
                     addToHistory(sortedNumbers);
                 }
             }, index * 300); // 각 공이 0.3초 간격으로 나타남
         });
     }
     
-    function resetNumbers() {
+    function resetBalls() {
         balls.forEach(ball => {
-            ball.setAttribute('data-number', '');
-            ball.textContent = '';
-            ball.style.backgroundColor = '#e0e0e0';
+            ball.style.transform = 'scale(0)';
+            ball.style.opacity = '0';
+            
+            setTimeout(() => {
+                ball.setAttribute('data-number', '');
+                ball.textContent = '';
+                ball.style.backgroundColor = '#e0e0e0';
+                ball.style.transform = 'scale(1)';
+                ball.style.opacity = '1';
+            }, 200);
         });
     }
     
