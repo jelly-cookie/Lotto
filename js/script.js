@@ -27,6 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // 선택된 숫자를 정렬
         const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
         
+        // 먼저 모든 공을 초기화
+        balls.forEach(ball => {
+            ball.setAttribute('data-number', '');
+            ball.textContent = '';
+            ball.style.backgroundColor = '#e0e0e0';
+            // 애니메이션 리셋을 위한 처리
+            ball.style.animation = 'none';
+            ball.offsetHeight; // 리플로우 강제 실행
+            ball.style.animation = null;
+        });
+        
         // 각 공에 번호 표시 및 색상 설정 (애니메이션 효과 포함)
         balls.forEach((ball, index) => {
             setTimeout(() => {
