@@ -18,6 +18,8 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -148,56 +150,13 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.ad-container {
-    margin: 2rem 0;
-    text-align: center;
-}
-
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    color: #666;
-}
-
-@keyframes popIn {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    70% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-
-    .ball {
-        width: 60px;
-        height: 60px;
-        font-size: 1.2rem;
-    }
-
-    .controls {
-        flex-direction: column;
-    }
-
-    .primary-button, .secondary-button {
-        width: 100%;
-    }
+    flex-wrap: wrap;
 }
 
 .history-numbers {
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .mini-ball {
@@ -216,4 +175,100 @@ footer {
 .history-timestamp {
     color: #666;
     font-size: 0.9rem;
+}
+
+.ad-container {
+    margin: 2rem 0;
+    text-align: center;
+    min-height: 100px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #666;
+}
+
+/* 모바일 대응 */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .lotto-section {
+        padding: 1rem;
+    }
+
+    .ball {
+        width: 55px;
+        height: 55px;
+        font-size: 1.2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .primary-button, .secondary-button {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .history-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .ball {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .mini-ball {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+
+    .history-timestamp {
+        font-size: 0.8rem;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 } 
