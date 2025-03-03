@@ -189,21 +189,6 @@ footer {
     color: #666;
 }
 
-.lottery-machine {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    padding: 20px;
-    margin: 2rem auto;
-    width: 200px;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border: 10px solid #f0f0f0;
-    perspective: 1000px;
-    transform-style: preserve-3d;
-}
-
 .lottery-ball {
     width: 35px;
     height: 35px;
@@ -217,13 +202,9 @@ footer {
     font-size: 1.1rem;
     box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.2),
                 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: 
-        float var(--duration) infinite var(--delay) ease-in-out,
-        spin 3s infinite linear,
-        bounce 1s infinite ease-in-out;
+    animation: fallAndBounce var(--duration) infinite var(--delay) ease-in-out;
     background-color: var(--color);
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
+    transform-origin: center bottom;
 }
 
 .wind-effect {
@@ -235,104 +216,40 @@ footer {
     background: 
         radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2) 0%, transparent 60%),
         radial-gradient(circle at 70% 70%, rgba(255,255,255,0.2) 0%, transparent 60%);
-    animation: windSpin 4s linear infinite;
-    pointer-events: none;
     opacity: 0.8;
-}
-
-.lottery-machine::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.9));
-    z-index: 2;
     pointer-events: none;
-    animation: glowPulse 3s infinite ease-in-out;
 }
 
-.lottery-machine::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background: #ddd;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    box-shadow: 0 0 10px rgba(255,255,255,0.8);
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translate3d(var(--startX), var(--startY), 0) rotateX(0deg) rotateY(0deg);
+@keyframes fallAndBounce {
+    0% {
+        transform: translateY(-100%) translateX(var(--startX));
+        animation-timing-function: ease-in;
+    }
+    15% {
+        transform: translateY(60%) translateX(calc(var(--startX) - 10px));
+        animation-timing-function: ease-out;
     }
     25% {
-        transform: translate3d(calc(var(--startX) + 40px), calc(var(--startY) - 50px), 20px) rotateX(180deg) rotateY(90deg);
+        transform: translateY(20%) translateX(calc(var(--startX) - 20px));
+        animation-timing-function: ease-in;
     }
-    50% {
-        transform: translate3d(calc(var(--startX) - 50px), calc(var(--startY) + 30px), -20px) rotateX(360deg) rotateY(180deg);
+    35% {
+        transform: translateY(40%) translateX(calc(var(--startX) - 30px));
+        animation-timing-function: ease-out;
     }
-    75% {
-        transform: translate3d(calc(var(--startX) + 20px), calc(var(--startY) + 40px), 30px) rotateX(180deg) rotateY(270deg);
+    45% {
+        transform: translateY(30%) translateX(calc(var(--startX) - 40px));
+        animation-timing-function: ease-in;
     }
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate3d(1, 1, 1, 0deg);
+    55% {
+        transform: translateY(35%) translateX(calc(var(--startX) - 50px));
+        animation-timing-function: ease-out;
     }
-    100% {
-        transform: rotate3d(1, 1, 1, 360deg);
+    65% {
+        transform: translateY(32%) translateX(calc(var(--startX) - 60px));
     }
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateZ(0);
-    }
-    50% {
-        transform: translateZ(15px);
-    }
-}
-
-@keyframes windSpin {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    50% {
-        transform: rotate(180deg) scale(1.2);
-    }
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
-}
-
-@keyframes glowPulse {
-    0%, 100% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 0.8;
-    }
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translate(0, 0);
-    }
-    25% {
-        transform: translate(100px, 50px);
-    }
-    50% {
-        transform: translate(200px, 0);
-    }
-    75% {
-        transform: translate(100px, -50px);
+    75%, 100% {
+        transform: translateY(33%) translateX(calc(var(--startX) - 60px));
     }
 }
 
