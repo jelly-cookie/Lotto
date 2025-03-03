@@ -3,21 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>행운의 로또 번호 추첨기</title>
-    <meta name="description" content="무료 로또 번호 추첨기 - 행운의 번호를 뽑아보세요!">
+    <title>행운의 로또 번호 추첨기 - 무료 로또 번호 생성</title>
+    <meta name="description" content="무료 로또 번호 추첨기로 행운의 번호를 뽑아보세요. 실시간으로 움직이는 로또 추첨 애니메이션과 함께 나만의 행운의 번호를 만들어보세요.">
+    <meta name="keywords" content="로또, 로또번호생성, 로또번호추첨, 무료로또, 행운번호, 로또추첨기">
+    <meta name="author" content="로또 번호 추첨기">
+    <meta property="og:title" content="행운의 로또 번호 추첨기 - 무료 로또 번호 생성">
+    <meta property="og:description" content="무료 로또 번호 추첨기로 행운의 번호를 뽑아보세요. 실시간으로 움직이는 로또 추첨 애니메이션과 함께 나만의 행운의 번호를 만들어보세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lotto.yourdomain.com">
+    <meta property="og:image" content="https://lotto.yourdomain.com/images/lotto-preview.jpg">
+    <link rel="canonical" href="https://lotto.yourdomain.com">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW0MF4VMPC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DW0MF4VMPC');
+    </script>
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8613796246656845"
      crossorigin="anonymous"></script>
+
+    <!-- 구조화된 데이터 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "행운의 로또 번호 추첨기",
+        "description": "무료 로또 번호 추첨기로 행운의 번호를 뽑아보세요.",
+        "url": "https://lotto.yourdomain.com",
+        "applicationCategory": "게임",
+        "operatingSystem": "웹 브라우저",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "KRW"
+        }
+    }
+    </script>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🎱 행운의 로또 번호 추첨기</h1>
+        <header role="banner">
+            <h1> 행운의 로또 번호 추첨기</h1>
             <p class="subtitle">당신의 행운을 시험해보세요!</p>
+            <div class="lotto-animation" aria-label="로또 추첨 애니메이션">
+                <div class="lottery-machine">
+                    <div class="wind-effect"></div>
+                    <div class="lottery-ball" style="--delay: 0s; --duration: 5.5s; --startX: 30px; --startY: 40px; --color: #FF6B6B;">7</div>
+                    <div class="lottery-ball" style="--delay: 0.4s; --duration: 6s; --startX: -40px; --startY: -30px; --color: #4ECDC4;">23</div>
+                    <div class="lottery-ball" style="--delay: 0.8s; --duration: 5.2s; --startX: 50px; --startY: -50px; --color: #45B7D1;">12</div>
+                    <div class="lottery-ball" style="--delay: 1.2s; --duration: 5.8s; --startX: -30px; --startY: 50px; --color: #96CEB4;">31</div>
+                    <div class="lottery-ball" style="--delay: 1.6s; --duration: 5.4s; --startX: 20px; --startY: -20px; --color: #FFBE0B;">42</div>
+                </div>
+            </div>
         </header>
 
-        <main>
+        <main role="main">
             <div class="ad-container">
                 <!-- Lotto_Display_1 -->
                 <ins class="adsbygoogle"
@@ -31,38 +77,24 @@
                 </script>
             </div>
 
-            <section class="lotto-section">
-                <div class="lotto-balls">
-                    <div class="ball" data-number=""></div>
-                    <div class="ball" data-number=""></div>
-                    <div class="ball" data-number=""></div>
-                    <div class="ball" data-number=""></div>
-                    <div class="ball" data-number=""></div>
-                    <div class="ball" data-number=""></div>
+            <section class="lotto-section" aria-label="로또 번호 추첨">
+                <div class="lotto-balls" aria-live="polite">
+                    <div class="ball" data-number="" aria-label="추첨된 번호"></div>
+                    <div class="ball" data-number="" aria-label="추첨된 번호"></div>
+                    <div class="ball" data-number="" aria-label="추첨된 번호"></div>
+                    <div class="ball" data-number="" aria-label="추첨된 번호"></div>
+                    <div class="ball" data-number="" aria-label="추첨된 번호"></div>
+                    <div class="ball" data-number="" aria-label="추첨된 번호"></div>
                 </div>
                 
                 <div class="controls">
-                    <button id="generateBtn" class="primary-button">번호 추첨하기</button>
-                    <button id="resetBtn" class="secondary-button">초기화</button>
-                </div>
-
-                <!-- 모바일용 중간 광고 -->
-                <div class="ad-container mobile-only">
-                    <!-- Lotto_Display_1 -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8613796246656845"
-                         data-ad-slot="7924837452"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <button id="generateBtn" class="primary-button" aria-label="번호 추첨하기">번호 추첨하기</button>
+                    <button id="resetBtn" class="secondary-button" aria-label="초기화">초기화</button>
                 </div>
 
                 <div class="history">
                     <h2>이전 추첨 번호</h2>
-                    <div id="historyList"></div>
+                    <div id="historyList" aria-live="polite"></div>
                 </div>
             </section>
 
@@ -80,11 +112,21 @@
             </div>
         </main>
 
-        <footer>
-            <p>© 2024 로또 번호 추첨기. All rights reserved.</p>
+        <footer role="contentinfo">
+            <p> 2024 로또 번호 추첨기. All rights reserved.</p>
         </footer>
     </div>
 
     <script src="js/script.js"></script>
+    <!-- 페이지 로드 시 GA 이벤트 전송 -->
+    <script>
+        window.addEventListener('load', function() {
+            gtag('event', 'page_view', {
+                page_title: '행운의 로또 번호 추첨기',
+                page_location: window.location.href,
+                page_path: window.location.pathname
+            });
+        });
+    </script>
 </body>
 </html>

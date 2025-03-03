@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     resetBtn.addEventListener('click', resetNumbers);
     
     function generateNumbers() {
+        // GA 이벤트 전송 - 번호 생성 시작
+        gtag('event', 'generate_numbers', {
+            'event_category': 'User Interaction',
+            'event_label': 'Generate Lotto Numbers'
+        });
+
         const numbers = new Set();
         
         // 버튼 비활성화
@@ -63,12 +69,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     generateBtn.disabled = false;
                     // 히스토리에 추가
                     addToHistory(sortedNumbers);
+                    
+                    // GA 이벤트 전송 - 번호 생성 완료
+                    gtag('event', 'numbers_generated', {
+                        'event_category': 'User Interaction',
+                        'event_label': 'Lotto Numbers Generated',
+                        'numbers': sortedNumbers.join(',')
+                    });
                 }
             }, index * 300); // 각 공이 0.3초 간격으로 나타남
         });
     }
     
     function resetNumbers() {
+        // GA 이벤트 전송 - 초기화
+        gtag('event', 'reset_numbers', {
+            'event_category': 'User Interaction',
+            'event_label': 'Reset Lotto Numbers'
+        });
+
         balls.forEach(ball => {
             ball.setAttribute('data-number', '');
             ball.textContent = '';
@@ -92,6 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // 로컬 스토리지에 저장
         localStorage.setItem('lottoHistory', JSON.stringify(numberHistory));
         updateHistory();
+
+        // GA 이벤트 전송 - 히스토리 업데이트
+        gtag('event', 'history_updated', {
+            'event_category': 'System',
+            'event_label': 'History Updated',
+            'history_count': numberHistory.length
+        });
     }
     
     function updateHistory() {
